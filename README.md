@@ -71,7 +71,7 @@ Certifique-se de ter o **Node.js** e o **npm (ou yarn)** instalados.
 
 ## 👩‍💻 Autor
 
-* **[MURILO RÖEDEL]** - *Engenheiro de computação em formação*
+* **MURILO RÖEDEL** - *Engenheiro de computação em formação*
     * LinkedIn: Murilo Röedel
     * https://github.com/mmroedel/
 
