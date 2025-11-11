@@ -3,23 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce</title>
+    <title>Magazine Murilo</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- estrutura do cabecalho -->
     <header class="header">
-        <span class="material-symbols-outlined icon">home</span>
-        <span class="material-symbols-outlined icon">shopping_cart_checkout</span>
-    </header>
-    <aside>
         
-    </aside>
-    <!-- estrutura dos card -->
-    <main id="produto-card"></main>
+        <div class="header-left">
+            <a href="index.html" class="logo">MM STORE</a>
+        </div>
+        <div class="header-center">
+            <form class="search-container">
+                
+                <div class="search-dropdown">
+                    <button type="button" class="category-btn">
+                        Categorias
+                        <span class="material-symbols-outlined">
+                            arrow_drop_down
+                        </span>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">Eletrônicos</a>
+                        <a href="#">Jóias</a>
+                        <a href="#">Roupas</a>
+                    </div>
+                </div>
+                <input type="text" class="search-input" placeholder="Buscar produtos...">
+                <button type="submit" class="search-btn">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+            </form>
+        </div>
+        <div class="header-right">
+            <a href="#" class="cart-icon">
+                <span class="material-symbols-outlined">
+                    shopping_cart
+                </span>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+
+    </header>
+    <main>
+        <section class="cardarea">
+        <div class="produto-card" id="produto-card"></div>
+        </section>
+     </main>
+
     <!-- estrutura do rodape -->
-    <footer>Todos direitos reservados</footer>
+    <footer>© 2025 MM STORE. Todos os direitos reservados.</footer>
     <script src="script.js"></script>
 </body>
 </html>

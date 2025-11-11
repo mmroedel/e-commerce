@@ -1,100 +1,263 @@
-*{
-            box-sizing: border-box;
-        }
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f4f4;
-            min-height: 100vh;        
-            margin: 0;                
-            display: flex;
-            flex-direction: column;   
-        }
-        .header{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            background: #279155;
-            height: 8vh;
-            position: relative;       
-            top: 0;
-        }
-        main{
-            flex: 1;                  
-            padding: 20px;            
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        .card{
-            display: inline-block;
-            background: #FFF;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            text-align: center;
-            transition: transform 0.2s;
-            margin: 10px; 
-        }
-        
-        .card:hover{
-            transform: scale(1.02);
-                }
-        .card img{
-            width: 200px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .card h2{
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-        .card p{
-            color: #555;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            height: 50px;
-            overflow: auto; /* ajuste */
-            text-align: justify;
-        }
-        .price{
-            font-weight: bold;
-            color: #27AE60;
-            margin: 5px 0;
-        }
-        .rating{
-            color: #F39C12;
-            font-weight: bold;
-        }
-        .btn-comprar{
-            background: #27AE60;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.2s;
-            margin-top: 15px;
-        }
-        .btn-comprar:hover{
-            background: #279155;
-        }
-        .icon{
-            display: flex;
-            font-size: 80px;
-            color: #FFF;
-            cursor: pointer;
-            transition: transform 0.2s;
-            margin: 20px;
-        }
+/* --- GERAL --- */
+body{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    min-height: 100vh;        
+    margin: 0;                
+    display: flex;
+    flex-direction: column;   
+}
+/* --- ESTILOS DO NOVO HEADER --- */
+
+.header {
+    /* Layout principal com Flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Mágico: cria as 3 colunas */
+    
+    /* Aparência */
+    width: 100%;
+    height: 80px; /* Um pouco mais de espaço */
+    background: #FFF; /* Header branco é mais moderno */
+    padding: 0 40px; /* Espaçamento nas laterais */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+    /* Posição (se você quiser fixo no topo) */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Garante que fique acima de outros itens */
+    
+    /* Remove/substitui estilos antigos */
+    color: #333; 
+    /* background: #00b7ff; */
+}
+
+/* --- 1. ESQUERDA (LOGO) --- */
+.header-left .logo {
+    text-decoration: none;
+    color: #004e6d; /* Reutilizando a cor do seu footer */
+    font-size: 1.5rem;
+    font-weight: 700; /* Da fonte Poppins */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* --- 2. CENTRO (PESQUISA) --- */
+.header-center {
+    flex: 1; 
+    max-width: 600px; 
+    padding: 0 40px; 
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    border: 1px solid #DDD;
+    border-radius: 50px; 
+    overflow: hidden; 
+}
+
+.search-input {
+    flex: 1; 
+    border: none;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    outline: none; 
+    font-family: 'Poppins', sans-serif;
+}
+
+.search-btn {
+    background: #f4f4f4; 
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    transition: background 0.2s;
+}
+.search-btn:hover {
+    background: #e0e0e0;
+}
+
+/* --- 2.1. DROPDOWN (Dentro da Pesquisa) --- */
+.search-dropdown {
+    position: relative; 
+}
+
+.category-btn {
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    border: none;
+    border-right: 1px solid #DDD; 
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+.category-btn .material-symbols-outlined {
+    font-size: 1.2rem;
+    margin-left: 4px;
+}
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background: #FFF;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 180px;
+    z-index: 100;
+}
+/* Estilo dos links dentro do dropdown */
+.dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+}
+.dropdown-content a:hover {
+    background: #f4f4f4;
+}
+
+.search-dropdown:hover .dropdown-content {
+    display: block;
+}
+.header-right {
+    position: relative; 
+}
+.cart-icon {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+.cart-icon .material-symbols-outlined {
+    font-size: 1.8rem; 
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: #E74C3C;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-family: Arial, sans-serif;
+}
+/* --- LAYOUT --- */
+.cardarea{
+    flex: 1;                  
+    padding: 20px;            
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    width: 90%; 
+    max-width: 1200px; 
+    margin: 20px auto;
+}
+
+.produto-card{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; 
+
+}
+
+/* --- ESTILO DO CARD --- */
+.card{
+    background: #FFF;
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 16px; 
+    text-align: left; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card img{
+    width: 100%; 
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px; 
+    margin-bottom: 16px;
+}
+
+.card h2{
+    font-size: 1.1rem; 
+    font-weight: 500; 
+    margin: 0 0 8px 0; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card p{
+    color: #666; 
+    font-size: 0.9rem;
+    margin-bottom: 16px; 
+    text-align: left; 
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limita a 3 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 50px; 
+}
+
+.price{
+    font-weight: 700; 
+    color: #333; 
+    margin: 0 0 4px 0; 
+    font-size: 1.25rem;
+}
+
+.rating{
+    color: #F39C12;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+
+.btn-comprar{
+    background: #27AE60;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px; 
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+    transition: background 0.2s ease, transform 0.2s ease;
+    margin-top: auto; /* ISSO ESTÁ CORRETO, mantém o botão no fundo */
+}
+
+.btn-comprar:hover{
+    background: #219150; 
+    transform: scale(1.03);
+}
         footer{
             width: 100%;
             height: 10vh;
-            background: #279155;
+            background: #004e6d;
             display: flex;
             justify-content: center;
             align-items: center;
