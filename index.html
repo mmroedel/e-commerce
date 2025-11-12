@@ -1,62 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magazine Murilo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Magazine Murilo</title>
+
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <!-- Fonte Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- estrutura do cabecalho -->
+    <!-- HEADER -->
     <header class="header">
-        
-        <div class="header-left">
-            <a href="index.html" class="logo">MM STORE</a>
-        </div>
-        <div class="header-center">
-            <form class="search-container">
-                
-                <div class="search-dropdown">
-                    <button type="button" class="category-btn">
-                        Categorias
-                        <span class="material-symbols-outlined">
-                            arrow_drop_down
-                        </span>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="#">Eletrônicos</a>
-                        <a href="#">Jóias</a>
-                        <a href="#">Roupas</a>
-                    </div>
-                </div>
-                <input type="text" class="search-input" placeholder="Buscar produtos...">
-                <button type="submit" class="search-btn">
-                    <span class="material-symbols-outlined">search</span>
+    <div class="header-left">
+      <a href="index.html" class="logo">Magazine Murilo</a>
+    </div>
+    
+    <div class="header-center">
+      <form class="search-container" id="search-form">
+          <div class="search-dropdown">
+              <button type="button" class="category-btn">
+                  Categorias
+                  <span class="arrow material-symbols-outlined">arrow_drop_down</span>
                 </button>
-            </form>
-        </div>
-        <div class="header-right">
-            <a href="#" class="cart-icon">
-                <span class="material-symbols-outlined">
-                    shopping_cart
-                </span>
-                <span class="cart-count">0</span>
-            </a>
-        </div>
+                <div class="dropdown-content">
+                    <a href="#">Eletrônicos</a>
+                    <a href="#">Jóias</a>
+                    <a href="#">Roupas</a>
+                </div>
+            </div>
+        <input type="text" class="search-input" placeholder="Buscar produtos..." />
+        <button type="submit" class="search-btn">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+      </form>
+    </div>
 
+    <div class="header-right">
+      <a href="#" class="cart-icon" id="cart-icon">
+        <span class="material-symbols-outlined">shopping_cart</span>
+        <span class="cart-count">0</span>
+      </a>
+    </div>
     </header>
-    <main>
-        <section class="cardarea">
-        <div class="produto-card" id="produto-card"></div>
-        </section>
-     </main>
-
-    <!-- estrutura do rodape -->
-    <footer>© 2025 MM STORE. Todos os direitos reservados.</footer>
-    <script src="script.js"></script>
+    
+    
+    
+    <!-- MAIN -->
+  <main>
+      <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <main class="content-layout">
+    
+    <!-- Área de produtos -->
+    <section class="cardarea">
+      <div class="produto-card" id="produto-card"></div>
+    </section>
+  </main>
+  
+  <!-- FOOTER -->
+  <footer>© 2025 Magazine Murilo. Todos os direitos reservados.</footer>
+  
+    <!-- Modal do Carrinho -->
+    <div id="cart-modal" class="modal">
+      <div class="modal-content cart-modal">
+          <span class="close-cart">&times;</span>
+          <h2>🛒 Seu Carrinho</h2>
+          <div id="cart-items"></div>
+          <div class="cart-total">
+              <strong>Total: R$ <span id="cart-total-value">0.00</span></strong>
+            </div>
+            <button id="finalizar-compra">Finalizar Compra</button>
+        </div>
+    </div>
+    <!-- MODAL PAGAMENTO -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content payment-modal">
+            <span class="close-payment">&times;</span>
+            <h2>💳 Escolha a forma de pagamento</h2>    
+            <div class="payment-options">
+                <button class="payment-btn" data-method="pix">Pix</button>
+                <button class="payment-btn" data-method="cartao">Cartão de Crédito</button>
+            </div>
+            <div id="payment-details"></div>
+        </div>
+    </div>
+      <!-- ===== MODAL DE PRODUTO ===== -->
+     <div id="modal-produto" class="modal">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+         <img id="modal-img" src="" alt="Produto">
+         <h2 id="modal-title"></h2>
+          <p id="modal-price"></p>
+          <button id="btn-add-cart">Adicionar ao carrinho</button>
+        </div>
+    </div>
+<script src="script.js"></script>
 </body>
 </html>
