@@ -33,18 +33,25 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="price">Preço: R$ ${item.price.toFixed(2)}</div>
             <div class="rating">Avaliação: ${item.rating.rate}</div>
             
+            <button class="btn-cart"
+              data-id="${item.id}"
+              data-title="${item.title}"
+              data-price="${item.price}"
+              data-image="${item.image}">
+              🛒 Adicionar ao Carrinho
+            </button>
             <button class="btn-comprar" 
-                data-id="${item.id}"
-                data-title="${item.title}"
-                data-price="${item.price}"
-                data-image="${item.image}">
-                Comprar
+            data-id="${item.id}"
+            data-title="${item.title}"
+            data-price="${item.price}"
+            data-image="${item.image}">
+            Comprar
             </button>
           </div>`;
       });
 
       container.innerHTML = cardsHTML;
-      setupCartButtons();
+      setupProductButtons();
     })
     .catch(error => {
       console.error("Erro ao carregar produtos:", error);
@@ -52,9 +59,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // --- Adicionar ao carrinho ---
-  function setupCartButtons() {
-    const allButtons = document.querySelectorAll('.btn-comprar');
-    allButtons.forEach(button => {
+  function setupProductButtons() {
+    
+    const addButtons = document.querySelectorAll('.btn-cart');
+    addButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const data = event.target.dataset;
+        const product = {
+          id: parseInt(data.id),
+          title: data.title,
+          price: parseFloat(data.price),
+          image: data.image
+        };        
+        cart.push(product);
+        atualizarCarrinho();
+        alert(`"${product.title}" adicionado ao carrinho!`);
+      });
+    });
+
+    
+    // --- configuração de Compra Direta ---
+    const buyButtons = document.querySelectorAll('.btn-comprar');
+    buyButtons.forEach(button => {
       button.addEventListener('click', (event) => {
         const data = event.target.dataset;
         const product = {
@@ -63,13 +89,18 @@ document.addEventListener("DOMContentLoaded", () => {
           price: parseFloat(data.price),
           image: data.image
         };
+
+        cart = []; 
         cart.push(product);
-        atualizarCarrinho();
-        alert(`"${product.title}" adicionado ao carrinho!`);
+        atualizarCarrinho(); 
+        exibirCarrinho(); 
+        paymentDetails.innerHTML = "";
+        paymentModal.style.display = "block";
       });
     });
   }
 
+  // --- atualizar contador do carrinho ---
   function atualizarCarrinho() {
     cartCountElement.textContent = cart.length;
   }
@@ -110,8 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     cartItemsContainer.innerHTML = html;
-    cartTotalValue.textContent = total.toFixed(2);
-  }
+    cartTotalValue.textContent = total.toFixed(2);  
+}
 
   // --- Pagamento ---
   btnFinalizarCompra.addEventListener("click", () => {

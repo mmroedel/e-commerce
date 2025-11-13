@@ -9,30 +9,36 @@
 body {
   background-color: #f4f4f4;
   color: #333;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
 
 /* ======= CABEÇALHO ======= */
-.header {
-  background-color: #004e6d;
+.header-top {
+  background-color: #0cbaff;
   color: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1rem 2rem;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+header .header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   font-weight: 700;
   text-decoration: none;
-  color: #fff;
+  color: #fff; 
 }
 
 /* ======= PESQUISA ======= */
@@ -78,11 +84,6 @@ body {
   transition: transform 0.3s;
 }
 
-.dropdown-content.show ~ .dropdown-arrow,
-.category-btn.active .dropdown-arrow {
-  transform: rotate(180deg);
-}
-
 .dropdown-content a {
   display: block;
   padding: 10px 14px;
@@ -102,9 +103,9 @@ body {
   flex: 1;
   font-size: 1rem;
 }
-
+/* ======= BOTÃO DE PESQUISA ======= */
 .search-btn {
-  background-color: #004e6d;
+  background-color: #0cbaff;
   border: none;
   color: white;
   padding: 0.6rem 1rem;
@@ -115,7 +116,32 @@ body {
 .search-btn:hover {
   background-color: #003b52;
 }
+/* ======= SUBNAV =========*/
+.subnav {
+  background-color: #004e6d;
+  padding: 0.5rem 2rem;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  margin-top: 80px;
+  z-index: 999;
+}
+.subnav .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  justify-content: start;
 
+}
+.subnav .nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.subnav .nav-links li a:hover {
+  text-decoration: underline;
+}
 /* ======= CARRINHO ======= */
 .header-right {
   position: relative;
@@ -127,9 +153,12 @@ body {
   position: relative;
   font-size: 1.8rem;
 }
+.cart-icon:hover {
+  color: #e0e0e0;
+}
 
 .cart-count {
-  background: #e74c3c;
+  background: #0c50b6;
   color: white;
   border-radius: 50%;
   font-size: 0.8rem;
@@ -138,6 +167,10 @@ body {
   top: -6px;
   right: -10px;
   font-weight: bold;
+}
+.cart-count:hover {
+  background: #002736;
+  color: #e0e0e0;
 }
 
 /* ======= ÁREA DE PRODUTOS ======= */
@@ -224,7 +257,24 @@ main {
   font-size: 0.9rem;
   margin-bottom: 12px;
 }
-
+/* ==== botao de adicionar ao carrinho ==== */
+.btn-cart {
+  background-color: #fda93a;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+  margin-bottom: 8px;
+}
+.btn-cart:hover {
+  background-color: #e68a2c;
+  transform: scale(1.03);
+}
+/* ==== botao de comprar ==== */
 .btn-comprar {
   background-color: #27ae60;
   color: white;
@@ -412,8 +462,15 @@ footer {
   font-size: 1rem;
   font-weight: 500;
   width: 100%;
-  margin-top: auto; /* Empurra pro final mesmo em telas grandes */
+  margin-top: auto;
   box-sizing: border-box;
+}
+.footer a {
+  color: #fda93a;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
 }
 
 /* ======= ANIMAÇÃO ======= */
