@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-g" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Magazine Murilo</title>
+
+  <!-- Material Symbols -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <!-- Fonte Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- CSS Principal -->
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+      <nav class="header-top">
+      <div class="header-left">
+        <a href="index.html" class="logo">Magazine Murilo</a>
+      </div>
+      <div class="header-center">
+        <form class="search-container" id="search-form">
+          <div class="search-dropdown">
+            <button type="button" class="category-btn">
+              Categorias
+              <span class="arrow material-symbols-outlined">arrow_drop_down</span>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Eletrônicos</a>
+              <a href="#">Jóias</a>
+              <a href="#">Roupas</a>
+            </div>
+          </div>
+          <input type="text" class="search-input" placeholder="Buscar produtos..." />
+          <button type="submit" class="search-btn">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+        </form>
+      </div>
+      <div class="header-right">
+        <a href="carrinho.html" class="cart-icon" id="cart-icon">
+          <span class="material-symbols-outlined">shopping_cart</span>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+      </nav>
+      <!-- SUBNAV -->
+      <nav class="subnav">
+        <ul class="nav-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="index.html#produto-card">Produtos</a></li>
+          <li><a href="#">Ofertas</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <!-- Conteudo Principal -->
+    <main class="content-layout cart-page-layout">
+      <h1>Seu Carrinho</h1>
+      <div class="cart-container">
+        
+        <!-- Coluna da Esquerda: Itens do Carrinho -->
+        <div class="cart-items-column">
+          <div class="cart-header">
+            <p>Produto</p>
+            <p>Quantidade</p>
+            <p>Total</p>
+            <p>Remover</p>
+          </div>
+          <div id="cart-page-items">
+          </div>
+        </div>
+        
+        <!-- Coluna da Direita: Resumo do Pedido -->
+        <div class="cart-summary-column">
+          <div class="order-summary">
+            <h3>Resumo do Pedido</h3>
+            <div class="summary-line">
+              <span>Subtotal:</span>
+              <span id="summary-subtotal">R$ 0,00</span>
+            </div>
+            <div class="summary-line">
+              <span>Frete:</span>
+              <span id="summary-shipping">R$ 15,00</span>
+            </div>
+            <hr>
+            <div class="summary-line total">
+              <span>Total:</span>
+              <span id="summary-total">R$ 0,00</span>
+            </div>
+            <div id="checkout-button-container">
+              <button class="btn-checkout">Finalizar Compra</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+      <!-- MODAL PAGAMENTO -->
+        <div id="payment-modal" class="modal">
+          <div class="modal-content payment-modal">
+            <span class="close-payment">&times;</span>
+            <h2>💳 Escolha a forma de pagamento</h2>    
+            <div class="payment-options">
+              <button class="payment-btn" data-method="pix">Pix</button>
+              <button class="payment-btn" data-method="cartao">Cartão de Crédito</button>
+            </div>
+            <div id="payment-details"></div>
+        </div>
+    </div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="#">Política de Privacidade</a> | 
+      <a href="#">Termos de Serviço</a> | 
+      <a href="#">Contato</a> |
+      <a href="#">Sobre Nós</a> |
+      <a href="#">Perguntas Frequentes</a>
+    </div>
+    <div>
+      © 2025 Magazine Murilo. Todos os direitos reservados.
+    </div>
+  </footer>
+  <!-- script -->
+  <script src="script.js"></script>
+</body>
+</html>
